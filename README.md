@@ -56,31 +56,19 @@ from virtual machines. A smarthost needs to be used in these cases. This
 image therefore requires an account at Google.
 
 Update `USERNAME` and `PASSWORD` in this row in the Dockerfile:
-`run echo smtp.gmail.com USERNAME:PASSWORD > /etc/postfix/relay_passwd`
+`run echo smtp.gmail.com USERNAME:PASSWORD > /etc/postfix/relay_passwd`.
 
-Then build with: `docker build --rm -t postfix .`
-
-Test to send a message from within the container:
+Build an image and start a container and then test to send a message from
+within the container:
 
   >docker run -t -i --rm postfix /bin/bash
-  >/start.sh &
+  >supervisord
   >su - someone
   >echo "This is a mail test message" |mutt -s "Test message" jonas@gizur.com
   >exit
 
 
-Now start a container and map the smtp port:
-
-  docker run -t -i -p 25:25 --name postfix -h postfix \
-  --restart="on-failure:10" --link rsyslog:rsyslog postfix \
-  /bin/bash -c "supervisord; bash"
-
-Exit the container with `ctrl-p` `ctrl-q` to leave it running. `exit` will stop
-the container.
-
-Check the logs: `docker logs postfix`
-
-See `test/README.md` for instructions on howto send a testmail.
+See `test-mail/README.md` for instructions on how to send a testmail.
 
 
 memcached
@@ -111,3 +99,12 @@ Resources
 Some usefull links:
 
  * http://logstash.net/docs/1.4.0/tutorials/getting-started-with-logstash
+
+
+Troubleshooting
+---------------
+
+ * `Could not resolve 'archive.ubuntu.com'`: This is probably related to network
+    problems when running in VirtualBox (try to restart the guest). Also try to
+    build with `no-cache=true`. It could also be the ubuntu mirror, try another
+    (see top of `Dockerfile`).
