@@ -95,7 +95,7 @@ RUN cp /etc/resolv.conf  /var/spool/postfix/etc/resolv.conf
 # Need to use smarthost when running in docker (since these IP-adresses often are blocked for spam purposes)
 # See: http://www.inboxs.com/index.php/linux-os/mail-server/52-configure-postfix-to-use-smart-host-gmail
 
-RUN echo smtp.gmail.com sendmail@gizur.com:fgdHC1Q2brbirFU40Vj5tceNQ8y1h46LLu/wplK2UnI= > /etc/postfix/relay_passwd
+RUN echo smtp.gmail.com USERNAME:PASSWORD > /etc/postfix/relay_passwd
 RUN chmod 600 /etc/postfix/relay_passwd
 RUN postmap /etc/postfix/relay_passwd
 
