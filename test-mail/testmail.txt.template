@@ -1,0 +1,12 @@
+ehlo 172.17.42.1
+mail from: root@localhost
+rcpt to: user@example.com
+data
+Subject: My first mail on Postfix
+Hi,
+Are you there?
+regards,
+Admin
+.
+quit
+
