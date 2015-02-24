@@ -1,5 +1,16 @@
+Gizur backend services
+======================
+
+A collection of services used by the applications hosted in Gizur's private
+docker cloud.
+
+These services are collected into one container in order to simplfy
+for the applications. Services here should be stable and change infrequently.
+Containers with applications should `--link` to a beservices container at
+start.
+
 logserver
-=========
+---------
 
 This container has a rsyslog server running and listening on UDP port 514.
 Any client (container in the network) can log to this rsyslog server.
