@@ -96,7 +96,7 @@ container. Run this from within another container on the same docker instance:
 redis
 -----
 
-Test this it works like this:
+Test thas it works like this:
 
     docker run -t -i --rm --link beservices:beservices ubuntu:trusty /bin/bash
     apt-get update
