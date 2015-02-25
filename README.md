@@ -43,7 +43,7 @@ rsyslog
 This container has a rsyslog server running and listening on UDP port 514.
 Any client (container in the network) can log to this rsyslog server.
 
-Use logstash for ordinary logging. `rsyslogd` is only used for devops.
+NOTE: Use logstash for ordinary logging. `rsyslogd` is only used for devops.
 
 
 Postfix mail server
