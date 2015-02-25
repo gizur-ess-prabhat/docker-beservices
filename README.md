@@ -17,7 +17,7 @@ Build the image: `docker build -t beservices .`
 Starting the server this way makes it possible to connect and reconnect to the
 server:
 
-    docker run -t -i -p 9200:9200 -p 9292:9292 -p 11211:11211 \
+    docker run -t -i -p 9200:9200 -p 9292:9292  \
     --restart="on-failure:10" --name beservices -h beservices \
     beservices /bin/bash -c "supervisord; bash"
 
@@ -75,7 +75,7 @@ memcached
 ---------
 
 Test that things is running. `[IP]` is the IP adress of the beservices
-container:
+container. Run this from within another container on the same docker instance:
 
   >telnet [IP] 11211
   >add mykey 0 900 2
@@ -91,6 +91,19 @@ container:
   >
   >END
   >quit
+
+
+redis
+-----
+
+Test this it works like this:
+
+    docker run -t -i --rm ubuntu:trusty /bin/bash
+    apt-get update
+    apt-get install -y redis-cli
+    redis
+    SET mykey myvalue
+    GET mykey
 
 
 Resources
