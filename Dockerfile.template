@@ -10,12 +10,13 @@ MAINTAINER Jonas Colmsjö <jonas@gizur.com>
 RUN echo "export HOME=/root" >> /root/.profile
 
 # Mirros: http://ftp.acc.umu.se/ubuntu/ http://us.archive.ubuntu.com/ubuntu/
-RUN echo "deb http://ftp.acc.umu.se/ubuntu/ trusty-updates main restricted" > /etc/apt/source.list
+#RUN echo "deb http://ftp.acc.umu.se/ubuntu/ trusty-updates main restricted" > /etc/apt/source.list
 #RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates main restricted" > /etc/apt/source.list
 #ADD ./etc-apt-sources.list /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get install -y wget nano curl git telnet
+RUN apt-get install -y openjdk-7-jdk
 
 
 #
@@ -59,7 +60,8 @@ ADD ./etc-pam.d-cron /etc/pam.d/cron
 # -----------------------------------
 #
 
-RUN apt-get install -y openjdk-7-jre
+# openjdk-7-jre
+#RUN apt-get install -y openjdk-7-jdk
 RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz
 RUN tar zxvf logstash-1.4.2.tar.gz
 ADD ./logstash.conf /
@@ -135,10 +137,18 @@ RUN apt-get install -y memcached
 
 
 #
+# redis-server
+# ------------
+
+RUN apt-get install -y redis-server
+ADD ./etc-redis-redis.conf /etc/redis/redis.conf
+
+
+#
 # Start things up
 # ----------------
 #
 
-EXPOSE 25 514 5514 9200 9292 11211
+EXPOSE 25 514 5514 6379 9200 9292 11211
 
 CMD ["supervisord"]
