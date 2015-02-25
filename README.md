@@ -77,20 +77,20 @@ memcached
 Test that things is running. `[IP]` is the IP adress of the beservices
 container. Run this from within another container on the same docker instance:
 
-  >telnet [IP] 11211
-  >add mykey 0 900 2
-  >
-  >
-  >STORED
-  >set mykey 0 60 5
-  >999
-  >
-  >STORED
-  >get mykey
-  >999
-  >
-  >END
-  >quit
+    >telnet [IP] 11211
+    >add mykey 0 900 2
+    >
+    >
+    >STORED
+    >set mykey 0 60 5
+    >999
+    >
+    >STORED
+    >get mykey
+    >999
+    >
+    >END
+    >quit
 
 
 redis
