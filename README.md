@@ -61,11 +61,11 @@ Update `USERNAME` and `PASSWORD` in this row in the Dockerfile:
 Build an image and start a container and then test to send a message from
 within the container:
 
-  >docker run -t -i --rm postfix /bin/bash
-  >supervisord
-  >su - someone
-  >echo "This is a mail test message" |mutt -s "Test message" jonas@gizur.com
-  >exit
+    >docker run -t -i --rm postfix /bin/bash
+    >supervisord
+    >su - someone
+    >echo "This is a mail test message" |mutt -s "Test message" jonas@gizur.com
+    >exit
 
 
 See `test-mail/README.md` for instructions on how to send a testmail.
