@@ -98,10 +98,10 @@ redis
 
 Test this it works like this:
 
-    docker run -t -i --rm ubuntu:trusty /bin/bash
+    docker run -t -i --rm --link beservices:beservices ubuntu:trusty /bin/bash
     apt-get update
-    apt-get install -y redis-cli
-    redis
+    apt-get install -y redis-tools
+    redis-cli -h beservices
     SET mykey myvalue
     GET mykey
 
