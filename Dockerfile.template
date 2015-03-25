@@ -145,10 +145,21 @@ ADD ./etc-redis-redis.conf /etc/redis/redis.conf
 
 
 #
+# Install webmin
+# ---------------
+
+
+RUN apt-get install -y libauthen-pam-perl
+ADD ./webmin-1.740.tar.gz /
+ADD ./install.sh /
+RUN /install.sh
+
+
+#
 # Start things up
 # ----------------
 #
 
-EXPOSE 25 514 5514 6379 9200 9292 11211
+EXPOSE 25 514 5514 6379 9200 9292 11211 10000
 
 CMD ["supervisord"]

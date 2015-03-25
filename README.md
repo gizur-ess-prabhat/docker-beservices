@@ -17,7 +17,7 @@ Build the image: `docker build -t beservices .`
 Starting the server this way makes it possible to connect and reconnect to the
 server:
 
-    docker run -t -i -p 9200:9200 -p 9292:9292  \
+    docker run -t -i -p 9200:9200 -p 9292:9292  -p 10000:10000 \
     --restart="on-failure:10" --name beservices -h beservices \
     beservices /bin/bash -c "supervisord; bash"
 
@@ -104,6 +104,19 @@ Test thas it works like this:
     redis-cli -h beservices
     SET mykey myvalue
     GET mykey
+
+
+webmin
+------
+
+[webmin](http://www.webmin.com) is a gui for linux server administration.
+
+It can be used for many things, for instance to minitor the disk usage.
+Login at port `10000` and select `Others->System and Server Status` and add
+monitor of type `dosk space`. Set `percentage of total` to `20% `etc. The script
+`/server-monitor.sh` will send a mail with extended information.
+Update the script with the mail-address you want to use. Select
+`Scheduled Monitoring` and setup a monitoring schedule.
 
 
 Resources
