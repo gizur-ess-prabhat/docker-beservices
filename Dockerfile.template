@@ -154,6 +154,10 @@ ADD ./webmin-1.740.tar.gz /
 ADD ./install.sh /
 RUN /install.sh
 
+# Install webminstats
+RUN apt-get install -y librrds-perl rrdtool
+RUN wget -O /sysstats-2.10.tgz "http://downloads.sourceforge.net/project/webminstats/Sysstats/2.10/sysstats-2.10.tgz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebminstats%2Ffiles%2FSysstats%2F&ts=1427275597&use_mirror=cznic"
+
 
 #
 # Start things up
