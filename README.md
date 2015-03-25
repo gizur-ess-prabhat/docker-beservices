@@ -118,6 +118,11 @@ monitor of type `dosk space`. Set `percentage of total` to `20% `etc. The script
 Update the script with the mail-address you want to use. Select
 `Scheduled Monitoring` and setup a monitoring schedule.
 
+There is a third-party performance monitoring tool downloaded. It needs
+to be installed manually in webmin though. Open `Webmin->Webmin Configuration`
+and select `Webmin Modules`. Choose `From local file` and select
+`sysstats-2.10.tgz`. You'll get som error messages but it seams to work.
+
 
 Resources
 --------
