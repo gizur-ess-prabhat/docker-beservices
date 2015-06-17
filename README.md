@@ -109,19 +109,24 @@ Test thas it works like this:
 webmin
 ------
 
-[webmin](http://www.webmin.com) is a gui for linux server administration.
+[webmin](http://www.webmin.com) is a gui for linux server administration. It
+can be used for many things, for instance to minitor the disk usage.
+Login at port `10000`.
 
-It can be used for many things, for instance to minitor the disk usage.
-Login at port `10000` and select `Others->System and Server Status` and add
-monitor of type `dosk space`. Set `percentage of total` to `20% `etc. The script
-`/server-monitor.sh` will send a mail with extended information.
-Update the script with the mail-address you want to use. Select
-`Scheduled Monitoring` and setup a monitoring schedule.
+Setup disk monitoring:
+
+ * other -> System and Server status
+ * Add monitor type: Disk Space
+ * Set minimum free space to 30% and send emails on failures
+  * The script `/server-monitor.sh` will send a mail with extended information.
+ * Setup scheduled monitoring
+  * Change `Send email when` to anytime service is down
+
 
 There is a third-party performance monitoring tool downloaded. It needs
 to be installed manually in webmin though. Open `Webmin->Webmin Configuration`
 and select `Webmin Modules`. Choose `From local file` and select
-`sysstats-2.10.tgz`. You'll get som error messages but it seams to work.
+`sysstats-2.10.tgz`. You'll get some error messages but it seams to work.
 
 
 Resources
